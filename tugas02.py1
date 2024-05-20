@@ -1,0 +1,63 @@
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def push(self, item):
+        self.items.append(item)
+        print(f"{item} telah ditambahkan ke dalam laci.")
+
+    def pop(self):
+        if self.is_empty():
+            print("Laci kosong, tidak ada berkas yang bisa diambil.")
+        else:
+            removed_item = self.items.pop()
+            print(f"{removed_item} telah diambil dari laci.")
+
+    def peek(self):
+        if self.is_empty():
+            print("Laci kosong, tidak ada berkas yang bisa dilihat.")
+        else:
+            print(f"Berkas paling atas di laci adalah: {self.items[-1]}")
+
+    def size(self):
+        return len(self.items)
+
+    def display(self):
+        if self.is_empty():
+            print("Laci kosong.")
+        else:
+            print("Berkas-berkas di dalam laci (dari atas ke bawah):")
+            for item in reversed(self.items):
+                print(item)
+
+# Contoh penggunaan
+if __name__ == "__main__":
+    laci = Stack()
+    
+    while True:
+        print("\nPilih opsi:")
+        print("1. Tambah berkas ke laci")
+        print("2. Ambil berkas dari laci")
+        print("3. Lihat berkas paling atas di laci")
+        print("4. Lihat semua berkas di laci")
+        print("5. Keluar")
+        pilihan = input("Masukkan pilihan (1/2/3/4/5): ")
+
+        if pilihan == '1':
+            berkas = input("Masukkan nama berkas yang ingin ditambahkan: ")
+            laci.push(berkas)
+        elif pilihan == '2':
+            laci.pop()
+        elif pilihan == '3':
+            laci.peek()
+        elif pilihan == '4':
+            laci.display()
+        elif pilihan == '5':
+            print("Program selesai.")
+            break
+        else:
+            print("Pilihan tidak valid. Silakan coba lagi.")
+            
